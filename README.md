@@ -38,7 +38,7 @@ After execution, the Tool will create a log file under the working directory of 
 
 ![End Window during Execution](images/endWindow_s2g.PNG)
 
-The log file will contain the summary of the Findings for each valid entry provided in the input file. The Tool is more sensitive in case of searching for CPEs because in our case of finding vulnerabilities, a False Negative is more harmful than a False Positive. In case of PURL generation, the Tool strictly only creates PURLs for exact matches, but lets the user know that a similar PURL exists.
+The log file will contain the summary of the Findings for each valid entry provided in the input file. The Tool is more sensitive in case of searching for CPEs because in our case of finding vulnerabilities, a False Negative is more harmful than a False Positive. In case of PURL generation, the Tool strictly only creates PURLs for exact matches, but lets the user know that a similar PURL exists in case the tool finds a close match to the assembly.
 
 ![Dummy Log File](images/logFile_s2g.PNG)
 
