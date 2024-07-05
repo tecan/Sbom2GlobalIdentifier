@@ -1,7 +1,8 @@
 # Sbom2GlobalIdentifier
 
 ## Description
-Sbom2GlobalIdentifier is a C# script that takes in JSON files as input to perform CPE lookups in the NVD database. The tool also tries to create PURLs for all the packages that are present in the provided SBOM file. It performs lookups in the NuGet and NPM databases for the creation of the PURLs.
+Sbom2GlobalIdentifier aims to solve the issue for SBOM files where the SBOM files dont contain global identifiers like PURLs and CPEs of the assemblies.
+The tool is a C# script that takes in JSON files as input to perform CPE lookups in the NVD database. The tool also creates PURLs for all the valid assemblies present in the provided SBOM file by performing lookups in the NuGet and NPM databases for the creation of the PURLs.
 ***!!The input JSON file must be a valid SBOM file*** [(CycloneDX v1.4 JSON Reference)](https://cyclonedx.org/docs/1.4/json/)
 
 There are 2 ways to feed the input to the Tool.
