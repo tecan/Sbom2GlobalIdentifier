@@ -6,14 +6,17 @@ The tool is a C# script that takes in JSON files as input to perform CPE lookups
 ***!!The input JSON file must be a valid SBOM file*** [(CycloneDX v1.4 JSON Reference)](https://cyclonedx.org/docs/1.4/json/)
 
 There are 3 ways to feed the input to the Tool.
-1. Provide the directory path as argument to the executable. (The name of the files in the specified directory must start with ‘bom’ to be considered as a valid sbom entry)
-2. Place the JSON file in the same directory as the executable. (The name of the files must start with ‘bom’ to be considered as a valid sbom entry) 
+1. Provide the directory path as argument to the executable. (The name of the files in the specified directory must start with ‘bom’)
+2. Place the JSON file in the same directory as the executable. (The name of the files must start with ‘bom’) 
 3. Provide the tool with a valid input file at runtime (The name does not necessarily have to start with ‘bom’).
 
 ### Command Line Arguments:
 -a || --apiKey == the apiKey to NVD
+
 -d || --dirPath == path to a directory with valid SBOM file(s).
+
 -l || --logPath == path to a directory where you wish the log files to be created. If not provided, the log files will be created in the CWD
+
 -x || --exclude == string (case insensitive) to be used for pattern matching. The tool will avoid using the assemblies from the input file that contain this string in their name.
  For example if  -x pIzZa is specified and the SBOM file contains a component, whose name contains ‘pizza’, the tool will ignore this assembly completely ( attention: case insensitive )
 ```
