@@ -59,8 +59,6 @@ else if( File.Exists( Constants.SECRETS_FILE ) && !string.IsNullOrEmpty( Constan
 ### Example usage:
  ./Sbom2GlobalIdentifier.exe -a 12345678 -d c:\git\validSboms -x tecan -l c:\git\validSboms\logFiles
  
-                                        (equivalent to)
-                                        
 ./Sbom2GlobalIdentifier.exe --apiKey 12345678 --dirPath c:\validSboms --exclude tecan --logPath c:\validSboms\logFiles
 
 
