@@ -5,31 +5,58 @@ Sbom2GlobalIdentifier aims to solve the issue for SBOM files where the SBOM file
 The tool is a C# script that takes in JSON files as input to perform CPE lookups in the NVD database. It also creates PURLs for all the valid assemblies present in the provided SBOM file by performing lookups in the NuGet and NPM databases for the creation of the PURLs.
 ***!!The input JSON file must be a valid SBOM file*** [(CycloneDX v1.4 JSON Reference)](https://cyclonedx.org/docs/1.4/json/)
 
-There are 2 ways to feed the input to the Tool.
-1. Place the JSON file in the same directory as the executable. (_The name must start with ‘bom’_)
-2. Provide the tool with a valid input file at runtime (_The name does not necessarily have to start with ‘bom’_).
+There are 3 ways to feed the input to the Tool.
+1. Provide the directory path as argument to the executable. (The name of the files in the specified directory must start with ‘bom’ to be considered as a valid sbom entry)
+2. Place the JSON file in the same directory as the executable. (The name of the files must start with ‘bom’ to be considered as a valid sbom entry) 
+3. Provide the tool with a valid input file at runtime (The name does not necessarily have to start with ‘bom’).
 
+### Command Line Arguments:
+-a || --apiKey == the apiKey to NVD
+-d || --dirPath == path to a directory with valid SBOM file(s).
+-l || --logPath == path to a directory where you wish the log files to be created. If not provided, the log files will be created in the CWD
+-x || --exclude == string (case insensitive) to be used for pattern matching. The tool will avoid using the assemblies from the input file that contain this string in their name.
+ For example if  -x pIzZa is specified and the SBOM file contains a component, whose name contains ‘pizza’, the tool will ignore this assembly completely ( attention: case insensitive )
+```
+//for an object in the components array which has the excluded string in its 'name', this component will be completely ignored
+"components" : [
+    {
+      "name" : "TestpizzaComponent",     //this object will be ignored since the name contains the exclude string
+      "version" : "0.1.26.0",
+      "description" : "test pizza",
+      "purl" : "pkg:nuget/pizza0.1.26.0",
+      "type" : "library",
+      "bom-ref" : "9sdc1e8e-s0da-21sz-86af-1682s37t38bf"
+    },
+    {
+        ....
+    },
+    ...
+]
+```
 
 The tool window will look something like this while its running:
 ![Window during Execution](images/startWindow_s2g.PNG)
 
 
-Note: You can speed the Tool up by providing an Api Key to NVD either as args or having a file nvd_accelerator.txt in the CWD of the executable (*this file should only have your Api key to NVD, nothing else*). Without an API key however, NVD restricts requests to 5 requests per rolling 30 second window, meaning the tool will send 1 request every 6-7 seconds.
+Note: You can speed the Tool up by providing an API Key to NVD by either providing the key as args (using --apiKey <apiKey>) or having a this exact file ```nvd_accelerator.txt``` in the CWD of the executable (the file should only have your API key to NVD, nothing else). Without an API key, NVD restricts requests to 5 requests per rolling 30 second window, which means the tool will send 1 request every 6-7 seconds to avoid HttpForbidden response.
 [NVD - API Key Request](https://nvd.nist.gov/developers/request-an-api-key)
 
 
 ```
-//the tool accepts the first argument passed as the api key
-if( args.Length > 0 )
+if( !string.IsNullOrEmpty( arg ) ) //where arg is the string provided using --apiKey
 {
-    ApiKey = args[0];
+    ApiKey = arg;
 }
-else if( File.Exists( Constants.SECRETS_FILE ) && !string.IsNullOrEmpty( Constants.SECRETS_FILE ))
+else if( File.Exists( Constants.SECRETS_FILE ) && !string.IsNullOrEmpty( Constants.SECRETS_FILE ) ) //where Constants.SECRETS_FILE is nvd_accelerator.txt 
 {
     ApiKey = File.ReadAllText( Constants.SECRETS_FILE );
 }
-Example usage: ./Sbom2GlobalIdentifier.exe 0123456789
 ```
+
+### Example usage:
+ ./Sbom2GlobalIdentifier.exe -a 12345678 -d c:\git\validSboms -x tecan -l c:\git\validSboms\logFiles
+                                        [equivalent to]
+./Sbom2GlobalIdentifier.exe --apiKey 12345678 --dirPath c:\validSboms --exclude tecan --logPath c:\validSboms\logFiles
 
 
 ---
