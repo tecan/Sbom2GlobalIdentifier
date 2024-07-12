@@ -37,6 +37,8 @@ There are 3 ways to feed the input to the Tool.
 ]
 ```
 
+---
+
 The tool window will look something like this while its running:
 ![Window during Execution](images/startWindow_s2g.PNG)
 
@@ -55,6 +57,8 @@ else if( File.Exists( Constants.SECRETS_FILE ) && !string.IsNullOrEmpty( Constan
     ApiKey = File.ReadAllText( Constants.SECRETS_FILE );
 }
 ```
+
+---
 
 ### Example usage:
  ./Sbom2GlobalIdentifier.exe -a 12345678 -d c:\git\validSboms -x tecan -l c:\git\validSboms\logFiles
