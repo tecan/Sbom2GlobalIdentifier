@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <OutputPath>..\bin</OutputPath>
+    <TargetFramework>net8.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>Sbom2GlobalIdentifier</Title>
+    <Authors>Tecan Trading Ltd., Switzerland</Authors>
+    <Company>Tecan Trading Ltd., Switzerland</Company>
+    <Product>Sbom2GlobalIdentifier</Product>
+    <Description>Sbom2GlobalIdentifier is a tool that uses JSON files to perform various lookups</Description>
+    <AssemblyName>Tecan.Tools.Sbom2GlobalIdentifier</AssemblyName>
+    <PackageTags>cpe;sbom;purl</PackageTags>
+    <PackageId>Sbom2GlobalIdentifier</PackageId>
+    <Version>1.0.0</Version>
+    <DebugType>none</DebugType>
+    <RepositoryUrl>https://github.com/tecan/Sbom2GlobalIdentifier</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" />
+    <PackageReference Include="NuGet.Packaging" />
+  </ItemGroup>
+
+</Project>

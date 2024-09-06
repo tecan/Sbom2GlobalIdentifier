@@ -1,0 +1,188 @@
+name: Build, Package, and Release
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+    outputs:
+      packageId: ${{ steps.extract_packageId_and_version.outputs.packageId }}
+      version: ${{ steps.extract_packageId_and_version.outputs.version }}
+      zipFileName: ${{ steps.zip_executable_with_dependencies.outputs.zipFileName }}
+      csprojPath:  ${{ steps.extract_packageId_and_version.outputs.csprojPath }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '1.x' # Placeholder for actual .NET version
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Extract PackageId and Version
+      id: extract_packageId_and_version
+      shell: pwsh
+      run: |
+        $csprojFileName = 'Sbom2GlobalIdentifier.csproj'
+        $csprojPath = Get-ChildItem -Path . -Recurse -Filter $csprojFileName | Select-Object -First 1
+
+        if ($csprojPath -eq $null) 
+        {
+          Write-Error "The file '$csprojFileName' was not found in the repository."
+          exit 1
+        }
+
+        $csprojPath = $csprojPath.FullName
+        $packageId = Select-Xml -Path $csprojPath -XPath '/Project/PropertyGroup/PackageId' | Select-Object -ExpandProperty Node | Select-Object -ExpandProperty InnerText
+        $version = Select-Xml -Path $csprojPath -XPath '/Project/PropertyGroup/Version' | Select-Object -ExpandProperty Node | Select-Object -ExpandProperty InnerText
+
+        # Set outputs
+        "packageId=$packageId" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+        "version=$version" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+        "csprojPath=$csprojPath" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+
+    - name: Build
+      run: dotnet build --configuration Release
+
+    - name: Run tests
+      run: dotnet test --configuration Release
+
+    - name: Publish
+      run: dotnet publish ${{ steps.extract_packageId_and_version.outputs.csprojPath }} --configuration Release --output publish
+
+    - name: Zip executable and dependencies
+      id: zip_executable_with_dependencies
+      shell: pwsh
+      run: |
+        $packageId = "${{ steps.extract_packageId_and_version.outputs.packageId }}"
+        $version = "${{ steps.extract_packageId_and_version.outputs.version }}"
+        $zipFileName = "$packageId-v$version.zip"
+        
+        $zipPath = Join-Path -Path $PWD -ChildPath $zipFileName
+
+        $filesToZip = Get-ChildItem -Path publish -Recurse | Where-Object { $_.Extension -ne '.nupkg' }
+        Compress-Archive -Path $filesToZip.FullName -DestinationPath $zipPath
+        Write-Host "Created zip file at: $zipPath"
+        
+        "zipFileName=$zipFileName" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+
+    - name: Create a GitHub Release
+      id: create_release
+      uses: Rohit-Kuinkel/create-release-node-update@main
+      with:
+        tag_name: 'v${{ steps.extract_packageId_and_version.outputs.version }}'
+        release_name: 'Release v${{ steps.extract_packageId_and_version.outputs.version }}'
+        body: ' '
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_1 }}
+
+    - name: Upload .zip to GitHub Release
+      id: upload_zip
+      uses: Rohit-Kuinkel/upload-release-asset-node-update@main
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./${{ steps.zip_executable_with_dependencies.outputs.zipFileName }}
+        asset_name: ${{ steps.zip_executable_with_dependencies.outputs.zipFileName }}
+        asset_content_type: application/zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_1 }}
+
+    - name: Upload .nupkg to GitHub Release
+      id: upload_nupkg
+      uses: Rohit-Kuinkel/upload-release-asset-node-update@main
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./bin/${{ steps.extract_packageId_and_version.outputs.packageId }}.${{ steps.extract_packageId_and_version.outputs.version }}.nupkg
+        asset_name: ${{ steps.extract_packageId_and_version.outputs.packageId }}.${{ steps.extract_packageId_and_version.outputs.version }}.nupkg
+        asset_content_type: application/zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_1 }}
+
+    - name: Delete Release and Tag on Failure
+      if: failure()
+      shell: pwsh
+      run: |
+        $releaseId = '${{ steps.create_release.outputs.id }}'
+        $tagName = 'v${{ steps.extract_packageId_and_version.outputs.version }}'
+
+        if ($releaseId) 
+        {
+          $headers = @{
+            Authorization = "token ${{ secrets.TOKEN_1 }}"
+            Accept = "application/vnd.github.v3+json"
+          }
+
+          $releaseUrl = "https://api.github.com/repos/${{ github.repository }}/releases/$releaseId"
+          $tagUrl = "https://api.github.com/repos/${{ github.repository }}/git/refs/tags/$tagName"
+
+          try 
+          {
+            # Delete the release
+            Invoke-RestMethod -Uri $releaseUrl -Method Delete -Headers $headers
+            Write-Host "Release $releaseId has been deleted."
+
+            # Delete the tag
+            Invoke-RestMethod -Uri $tagUrl -Method Delete -Headers $headers
+            Write-Host "Tag $tagName has been deleted."
+          }
+          catch 
+          {
+            Write-Error "Failed to delete release or tag. Error: $_"
+          }
+        }
+        else 
+        {
+          Write-Warning "Release ID is not available, cannot delete release."
+        }
+
+    - name: Dump Environment Variables and Outputs
+      if: always() 
+      shell: pwsh
+      run: |
+        # Dump step outputs for packageId, version, and zipFileName
+        Write-Host "Dumping step outputs:"
+        Write-Host "packageId: ${{ steps.extract_packageId_and_version.outputs.packageId }}"
+        Write-Host "version: ${{ steps.extract_packageId_and_version.outputs.version }}"
+        Write-Host "zipFileName: ${{ steps.zip_executable_with_dependencies.outputs.zipFileName }}"
+
+
+  create-release-branch:
+    needs: [build-and-deploy]
+    if: success()
+    runs-on: windows-latest
+    env:
+      Version: ${{ needs.build-and-deploy.outputs.version }}
+      PackageId: ${{ needs.build-and-deploy.outputs.packageId }}
+   
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Release Branch
+        shell: pwsh
+        run: |
+          $BRANCH_NAME = "release/$env:PackageId-v$env:Version"
+
+          git fetch origin
+          $branchExists = git show-ref --quiet "refs/heads/$BRANCH_NAME"
+
+          if ($branchExists) 
+          {
+            Write-Host "Branch $BRANCH_NAME already exists."
+            exit 0
+          }
+
+          git checkout -b $BRANCH_NAME
+          git push origin $BRANCH_NAME

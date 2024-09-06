@@ -1,0 +1,79 @@
+{
+  "bomFormat" : "CycloneDX",
+  "specVersion" : "1.5",
+  "serialNumber" : "urn:uuid:092bf173-5905-44a9-985c-7e018e7d2598",
+  "version" : 1,
+  "metadata" : {
+    "timestamp" : "2024-03-08T16:10:05Z",
+    "tools" : [
+      {
+        "vendor" : "OWASP",
+        "name" : "Dependency-Track",
+        "version" : "4.10.1"
+      }
+    ],
+    "component" : {
+      "name" : "Sample Product",
+      "version" : "develop",
+      "type" : "application",
+      "bom-ref" : "881395cb-0e16-4730-93a2-9eb104edc9f3"
+    }
+  },
+    "components": [
+        {
+            "name": "AsyncIO",
+            "version": "0.1.26",
+            "description": "AsyncIO",
+            "hashes": [
+                {
+                    "alg": "SHA-512",
+                    "content": "995e9fbc98382bf90deb1cd0d6c24937393b2fc5b484a6319b67a71a08b4714b3cd6fe52e4959f245f8cf8aa327e685434d872d670dc4b8c9caeef2904e146cb"
+                }
+            ],
+            "purl": "pkg:nuget/AsyncIO@0.1.26",
+            "type": "library",
+            "bom-ref": "e1b08307-1bc8-4cdf-b08d-70cb1f5ff569"
+        },
+        {
+            "name": "Microsoft.Bcl.AsyncInterfaces",
+            "version": "1.1.0",
+            "description": "Provides the IAsyncEnumerable<T> and IAsyncDisposable interfaces and helper types for .NET Standard 2.0. This package is not required starting with .NET Standard 2.1 and .NET Core 3.0. Commonly Used Types: System.IAsyncDisposable System.Collections.Generic.IAsyncEnumerable System.Collections.Generic.IAsyncEnumerator When using NuGet 3.x this package requires at least version 3.4.",
+            "hashes": [
+                {
+                    "alg": "SHA-512",
+                    "content": "d409ba9785699f7fcadf675a12a648f8516bf7a3a56648302b62dc4f7a59db35ae6d1e734cf5b7fc590ed516adf646fba1039ae2bc6097d2c91dce6db290967e"
+                }
+            ],
+            "licenses": [
+                {
+                    "license": {
+                        "id": "MIT"
+                    }
+                }
+            ],
+            "copyright": "© Microsoft Corporation. All rights reserved.",
+            "purl": "pkg:nuget/Microsoft.Bcl.AsyncInterfaces@1.1.0",
+            "externalReferences": [
+                {
+                    "type": "website",
+                    "url": "https://github.com/dotnet/corefx"
+                }
+            ],
+            "type": "library",
+            "bom-ref": "ea9b483a-332f-4be2-a980-675de7676017"
+        }
+    ],
+    "dependencies": [
+        {
+            "ref": "e1b08307-1bc8-4cdf-b08d-70cb1f5ff569",
+            "dependsOn": []
+        },
+        {
+            "ref": "ea9b483a-332f-4be2-a980-675de7676017",
+            "dependsOn": []
+        }
+    ],
+  "vulnerabilities" : [
+
+  ]
+}

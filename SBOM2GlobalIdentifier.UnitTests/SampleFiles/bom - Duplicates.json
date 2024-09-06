@@ -1,0 +1,94 @@
+{
+  "bomFormat" : "CycloneDX",
+  "specVersion" : "1.5",
+  "serialNumber" : "urn:uuid:092bf173-5905-44a9-985c-7e018e7d2598",
+  "version" : 1,
+  "metadata" : {
+    "timestamp" : "2024-03-08T16:10:05Z",
+    "tools" : [
+      {
+        "vendor" : "OWASP",
+        "name" : "Dependency-Track",
+        "version" : "4.10.1"
+      }
+    ],
+    "component" : {
+      "name" : "Sample Product",
+      "version" : "develop",
+      "type" : "application",
+      "bom-ref" : "881395cb-0e16-4730-93a2-9eb104edc9f3"
+    }
+  },
+    "components": [
+        {
+            "name": "Microsoft.CSharp",
+            "version": "4.5.0",
+            "description": "Provides support for compilation and code generation, including dynamic, using the C# language. Commonly Used Types: Microsoft.CSharp.RuntimeBinder.Binder Microsoft.CSharp.RuntimeBinder.RuntimeBinderException Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfoFlags Microsoft.CSharp.RuntimeBinder.CSharpBinderFlags 30ab651fcb4354552bd4891619a0bdd81e0ebdbf When using NuGet 3.x this package requires at least version 3.4.",
+            "hashes": [
+                {
+                    "alg": "SHA-512",
+                    "content": "91a8fa59be2aa0cb87dc7c92149871c107def11fec26c3499c036bbeff167453cca0d6ca63986d7cdb1cbfe2c70aee62a73fb8f66d9ef96417a4b5ebf5761e99"
+                }
+            ],
+            "licenses": [
+                {
+                    "license": {
+                        "url": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT"
+                    }
+                }
+            ],
+            "copyright": "© Microsoft Corporation. All rights reserved.",
+            "purl": "pkg:nuget/Microsoft.CSharp@4.5.0",
+            "externalReferences": [
+                {
+                    "type": "website",
+                    "url": "https://dot.net/"
+                }
+            ],
+            "type": "library",
+            "bom-ref": "74397aff-78d9-4aba-a445-71b37449dad3"
+        },
+        {
+            "name": "Microsoft.CSharp",
+            "version": "4.7.0",
+            "description": "Provides support for compilation and code generation, including dynamic, using the C# language. Commonly Used Types: Microsoft.CSharp.RuntimeBinder.Binder Microsoft.CSharp.RuntimeBinder.RuntimeBinderException Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfoFlags Microsoft.CSharp.RuntimeBinder.CSharpBinderFlags When using NuGet 3.x this package requires at least version 3.4.",
+            "hashes": [
+                {
+                    "alg": "SHA-512",
+                    "content": "2c96988515f95714d4b83f5650f183dc6a564e0b3cf5255fa0e3ef48476debab4bde542f9f2f6c47f6620b7a71d6a515e4415e6d2e388b60817a29621d5690df"
+                }
+            ],
+            "licenses": [
+                {
+                    "license": {
+                        "id": "MIT"
+                    }
+                }
+            ],
+            "copyright": "© Microsoft Corporation. All rights reserved.",
+            "purl": "pkg:nuget/Microsoft.CSharp@4.7.0",
+            "externalReferences": [
+                {
+                    "type": "website",
+                    "url": "https://github.com/dotnet/corefx"
+                }
+            ],
+            "type": "library",
+            "bom-ref": "9c4ed36a-8230-4feb-be49-24101be5c91e"
+        }
+
+    ],
+    "dependencies": [
+        {
+            "ref": "74397aff-78d9-4aba-a445-71b37449dad3",
+            "dependsOn": []
+        },
+        {
+            "ref": "9c4ed36a-8230-4feb-be49-24101be5c91e",
+            "dependsOn": []
+        }
+    ],
+  "vulnerabilities" : [
+
+  ]
+}

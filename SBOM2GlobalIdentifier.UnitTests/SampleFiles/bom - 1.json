@@ -1,0 +1,409 @@
+{
+  "bomFormat" : "CycloneDX",
+  "specVersion" : "1.5",
+  "serialNumber" : "urn:uuid:5cb9861b-ebed-4d6a-927a-7b98511072f8",
+  "version" : 1,
+  "metadata" : {
+    "timestamp" : "2024-03-08T16:08:43Z",
+    "tools" : [
+      {
+        "vendor" : "OWASP",
+        "name" : "Dependency-Track",
+        "version" : "4.10.1"
+      }
+    ],
+    "component" : {
+      "name" : "Sample Product",
+      "version" : "develop",
+      "type" : "application",
+      "bom-ref" : "ec439658-4e2d-46b2-9354-d6fac4e1fade"
+    }
+  },
+  "components" : [
+    {
+      "name" : "AsyncIO",
+      "version" : "0.1.26.0",
+      "description" : "AsyncIO",
+      "purl" : "pkg:nuget/AsyncIO@0.1.26.0",
+      "type" : "library",
+      "bom-ref" : "96ac5e8e-c0df-40db-86af-3612237d38bf"
+    },
+    {
+      "name" : "AutoMapper",
+      "version" : "6.2.2",
+      "description" : "A convention-based object-object mapper. AutoMapper uses a fluent configuration API to define an object-object mapping strategy. AutoMapper uses a convention-based matching algorithm to match up source to destination values. Currently, AutoMapper is designed for model projection scenarios to flatten complex object models to DTOs and other simple objects, whose design is better suited for serialization, communication, messaging, or simply an anti-corruption layer between the domain and application layer.",
+      "purl" : "pkg:nuget/AutoMapper@6.2.2",
+      "type" : "library",
+      "bom-ref" : "94ed35b8-a344-4187-8d00-0e0021ca3775"
+    },
+    {
+      "name" : "Castle.Core",
+      "version" : "4.4.0",
+      "description" : "Castle Core, including DynamicProxy, Logging Abstractions and DictionaryAdapter",
+      "copyright" : "Copyright (c) 2004-2019 Castle Project - http://www.castleproject.org/",
+      "purl" : "pkg:nuget/Castle.Core@4.4.0",
+      "type" : "library",
+      "bom-ref" : "bde00c40-fc61-41bb-9b74-21ee4bf49876"
+    },
+    {
+      "name" : "CommonServiceLocator",
+      "version" : "1.3.0",
+      "description" : "The Common Service Locator library contains a shared interface for service location which application and framework developers can reference. The library provides an abstraction over IoC containers and service locators. Using the library allows an application to indirectly access the capabilities without relying on hard references. The hope is that using this library, third-party applications and frameworks can begin to leverage IoC/Service Location without tying themselves down to a specific implementation.",
+      "purl" : "pkg:nuget/CommonServiceLocator@1.3.0",
+      "type" : "library",
+      "bom-ref" : "1e9e3ceb-5d18-4595-bd9b-604c6643ab1e"
+    },
+    {
+      "name" : "JetBrains.Annotations",
+      "version" : "11.1.0",
+      "description" : "Annotations to increase accuracy of ReSharper code inspections",
+      "purl" : "pkg:nuget/JetBrains.Annotations@11.1.0",
+      "type" : "library",
+      "bom-ref" : "a2174bd6-df6b-4308-bee6-b69d5c935498"
+    },
+    {
+      "name" : "linq2db",
+      "version" : "2.6.4",
+      "description" : "LINQ to DB is a data access technology that provides a run-time infrastructure for managing relational data as objects.",
+      "copyright" : "Copyright © 2018 Igor Tkachev, Ilya Chudin, Svyatoslav Danyliv, Dmitry Lukashenko",
+      "purl" : "pkg:nuget/linq2db@2.6.4",
+      "type" : "library",
+      "bom-ref" : "0f9dc253-e134-4191-a436-531cb94b63fb"
+    },
+    {
+      "name" : "linq2db.SQLite",
+      "version" : "2.9.1",
+      "description" : "This package includes a T4 template to generate data models for SQLite database and references to the linq2db and System.Data.SQLite nugets.",
+      "copyright" : "Copyright © 2019 Igor Tkachev, Ilya Chudin, Svyatoslav Danyliv, Dmitry Lukashenko",
+      "purl" : "pkg:nuget/linq2db.SQLite@2.9.1",
+      "type" : "library",
+      "bom-ref" : "0056bc51-28a4-4268-9842-d4e3ae575c11"
+    },
+    {
+      "name" : "Moq",
+      "version" : "4.11.0",
+      "description" : "Moq is the most popular and friendly mocking framework for .NET.",
+      "purl" : "pkg:nuget/Moq@4.11.0",
+      "type" : "library",
+      "bom-ref" : "c71f1a41-04a6-4190-8cc7-7d0f985126be"
+    },
+    {
+      "name" : "ncalc",
+      "version" : "1.3.8",
+      "description" : "NCalc is a mathematical expressions evaluator in .NET. NCalc can parse any expression and evaluate the result, including static or dynamic parameters and custom functions.",
+      "purl" : "pkg:nuget/ncalc@1.3.8",
+      "type" : "library",
+      "bom-ref" : "4d0f0fd8-2b33-450d-a03c-77feb81581e8"
+    },
+    {
+      "name" : "NetMQ",
+      "version" : "4.0.0.1",
+      "description" : "A 100% native C# port of the lightweight high performance messaging library ZeroMQ",
+      "purl" : "pkg:nuget/NetMQ@4.0.0.1",
+      "type" : "library",
+      "bom-ref" : "b55cbd81-f8d7-4fa1-9987-ca05bca0f5ee"
+    },
+    {
+      "name" : "Newtonsoft.Json",
+      "version" : "12.0.3",
+      "description" : "Json.NET is a popular high-performance JSON framework for .NET",
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "MIT"
+          }
+        }
+      ],
+      "copyright" : "Copyright © James Newton-King 2008",
+      "purl" : "pkg:nuget/Newtonsoft.Json@12.0.3",
+      "type" : "library",
+      "bom-ref" : "30e22380-b597-4444-8313-4bfe946cf138"
+    },
+    {
+      "name" : "PDFsharp-MigraDoc-wpf",
+      "version" : "1.50.5147",
+      "description" : "Creating Documents on the Fly. This is the MigraDoc WPF package. See Project Information for details.",
+      "purl" : "pkg:nuget/PDFsharp-MigraDoc-wpf@1.50.5147",
+      "type" : "library",
+      "bom-ref" : "63c9560b-29f0-480d-808b-e02d54170049"
+    },
+    {
+      "name" : "Prism",
+      "version" : "4.1.0.0",
+      "description" : "Prism core libraries.",
+      "purl" : "pkg:nuget/Prism@4.1.0.0",
+      "type" : "library",
+      "bom-ref" : "9fac2c9c-7231-407c-b69e-df8496404bd6"
+    },
+    {
+      "name" : "Prism.MEFExtensions",
+      "version" : "4.1.0.0",
+      "description" : "Managed Extensibility Framework (MEF) extensions for Prism.",
+      "purl" : "pkg:nuget/Prism.MEFExtensions@4.1.0.0",
+      "type" : "library",
+      "bom-ref" : "6f549f0f-6270-4dc9-87bd-dd1a3964e69b"
+    },
+    {
+      "name" : "SharpZipLib",
+      "version" : "1.3.1",
+      "description" : "SharpZipLib (#ziplib, formerly NZipLib) is a compression library for Zip, GZip, BZip2, and Tar written entirely in C# for .NET. It is implemented as an assembly (installable in the GAC), and thus can easily be incorporated into other projects (in any .NET language)",
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "MIT"
+          }
+        }
+      ],
+      "copyright" : "Copyright © 2000-2020 SharpZipLib Contributors",
+      "purl" : "pkg:nuget/SharpZipLib@1.3.1",
+      "type" : "library",
+      "bom-ref" : "4b91dc2c-193d-4856-b163-5bfcc106e8e8"
+    },
+    {
+      "name" : "System.Collections.Immutable",
+      "version" : "1.5.0",
+      "description" : "This package provides collections that are thread safe and guaranteed to never change their contents, also known as immutable collections. Like strings, any methods that perform modifications will not change the existing instance but instead return a new instance. For efficiency reasons, the implementation uses a sharing mechanism to ensure that newly created instances share as much data as possible with the previous instance while ensuring that operations have a predictable time complexity. Commonly Used Types: System.Collections.Immutable.ImmutableArray System.Collections.Immutable.ImmutableArray<T> System.Collections.Immutable.ImmutableDictionary System.Collections.Immutable.ImmutableDictionary<TKey,TValue> System.Collections.Immutable.ImmutableHashSet System.Collections.Immutable.ImmutableHashSet<T> System.Collections.Immutable.ImmutableList System.Collections.Immutable.ImmutableList<T> System.Collections.Immutable.ImmutableQueue System.Collections.Immutable.ImmutableQueue<T> System.Collections.Immuta...",
+      "copyright" : "© Microsoft Corporation. All rights reserved.",
+      "purl" : "pkg:nuget/System.Collections.Immutable@1.5.0",
+      "type" : "library",
+      "bom-ref" : "99479f75-a207-4ebe-a1af-2c78fa3ff574"
+    },
+    {
+      "name" : "System.Data.SQLite.Core",
+      "version" : "1.0.109.2",
+      "description" : "The official SQLite database engine for both x86 and x64 along with the ADO.NET provider.",
+      "copyright" : "Public Domain",
+      "purl" : "pkg:nuget/System.Data.SQLite.Core@1.0.109.2",
+      "type" : "library",
+      "bom-ref" : "1d711b8a-9104-41a9-ac2a-743a6a636723"
+    },
+    {
+      "name" : "System.Threading.Tasks.Extensions",
+      "version" : "4.5.2",
+      "description" : "Provides additional types that simplify the work of writing concurrent and asynchronous code. Commonly Used Types: System.Threading.Tasks.ValueTask<TResult> 99ce22c306b07f99ddae60f443d23a983ae78f7b",
+      "copyright" : "© Microsoft Corporation. All rights reserved.",
+      "purl" : "pkg:nuget/System.Threading.Tasks.Extensions@4.5.2",
+      "type" : "library",
+      "bom-ref" : "105dee96-a095-4560-8632-d2f5c69e343b"
+    },
+    {
+      "name" : "System.ValueTuple",
+      "version" : "4.5.0",
+      "description" : "Provides the System.ValueTuple structs, which implement the underlying types for tuples in C# and Visual Basic. Commonly Used Types: System.ValueTuple System.ValueTuple<T1> System.ValueTuple<T1, T2> System.ValueTuple<T1, T2, T3> System.ValueTuple<T1, T2, T3, T4> System.ValueTuple<T1, T2, T3, T4, T5> System.ValueTuple<T1, T2, T3, T4, T5, T6> System.ValueTuple<T1, T2, T3, T4, T5, T6, T7> System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest> 30ab651fcb4354552bd4891619a0bdd81e0ebdbf When using NuGet 3.x this package requires at least version 3.4.",
+      "copyright" : "© Microsoft Corporation. All rights reserved.",
+      "purl" : "pkg:nuget/System.ValueTuple@4.5.0",
+      "type" : "library",
+      "bom-ref" : "b21e71c0-7340-40a6-b847-cab3ec0b9d37"
+    }
+  ],
+  "dependencies" : [
+    {
+      "ref" : "ec439658-4e2d-46b2-9354-d6fac4e1fade",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "96ac5e8e-c0df-40db-86af-3612237d38bf",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "94ed35b8-a344-4187-8d00-0e0021ca3775",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "bde00c40-fc61-41bb-9b74-21ee4bf49876",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "1e9e3ceb-5d18-4595-bd9b-604c6643ab1e",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "a2174bd6-df6b-4308-bee6-b69d5c935498",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "0f9dc253-e134-4191-a436-531cb94b63fb",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "0056bc51-28a4-4268-9842-d4e3ae575c11",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "c71f1a41-04a6-4190-8cc7-7d0f985126be",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "4d0f0fd8-2b33-450d-a03c-77feb81581e8",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "b55cbd81-f8d7-4fa1-9987-ca05bca0f5ee",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "30e22380-b597-4444-8313-4bfe946cf138",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "63c9560b-29f0-480d-808b-e02d54170049",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "9fac2c9c-7231-407c-b69e-df8496404bd6",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "6f549f0f-6270-4dc9-87bd-dd1a3964e69b",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "4b91dc2c-193d-4856-b163-5bfcc106e8e8",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "99479f75-a207-4ebe-a1af-2c78fa3ff574",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "1d711b8a-9104-41a9-ac2a-743a6a636723",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "105dee96-a095-4560-8632-d2f5c69e343b",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "b21e71c0-7340-40a6-b847-cab3ec0b9d37",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "a00b7d0e-7319-4cf4-9775-9ad960ef59ac",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "e9eac52b-2789-4809-bf0f-9a79e4d74e83",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "6deec715-fc55-49ea-9650-0bdb6081e305",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "5f1a4417-a614-4892-8bc3-12268e163547",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "5fb7d12a-7ad7-453a-bf51-8b5ca3ae955e",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "8d52329a-0d7c-4bd4-ba87-4b14cce2f0eb",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "a9808fe7-81f1-4983-a0cc-cffbf6a8b23f",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "ab341405-0b90-4450-a7e8-cb10ac9fbff0",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "928d195c-d1e3-401c-aa12-934c913adef5",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "ece1c269-5014-4c7c-9f1a-1d65a2f7d182",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "0e9e14b0-de41-498f-8154-eeacc00bdd81",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "0a9bb9ae-e031-4b76-98f8-005f58ed0143",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "6b4a79b1-d880-4017-9c2c-99a0e1a6a132",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "d73589c8-b2cb-4a4e-94da-2c3ae6bde56b",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "b02d4239-e94a-43e4-b47d-5307d64af785",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "ba478f87-0256-43e5-93e2-ad875070ad2a",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "cca91400-e02f-4d35-b553-ff87347a5617",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "3d4ba8b3-e1fa-4792-b382-088ea1f6fe5f",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "c30c1144-9fbd-4861-9c09-73db799b9969",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "2add6646-86ff-4f8e-9229-9a59470e3006",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "c7b08eeb-735e-4232-bd61-8d0970333015",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "f3ca3bc2-da1b-4270-ab6e-705ad1690ec4",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "75b8d2b3-5bd0-41ad-88c4-80daee2d28fc",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "60ce277a-9a5d-46fb-a629-d8e4911ec476",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "0c684401-5655-4c45-a4f4-4d90c09f9683",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "626b9176-7c65-45d6-aedb-38a2d1fdc3be",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "d2bb2ca0-9a61-4e1c-a1a0-67503de34269",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "f51376ab-126b-4061-b439-a3168cda42a7",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "f7a76a68-a1c1-4c72-8222-edc883988daf",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "eb2ce8b1-4a6e-430e-b8d4-27ba55502d09",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "dfa57ba0-fa9b-4dc7-99db-6ca266f351a9",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "bd52b24e-3331-494b-876f-7c7971ab9cdc",
+      "dependsOn" : [ ]
+    }
+  ]
+}
