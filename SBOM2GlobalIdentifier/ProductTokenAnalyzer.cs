@@ -13,7 +13,7 @@ namespace Tecan.Tools.Sbom2GlobalIdentifier
         private const int ASSEMBLY_VERSION_IDX = 5;         // index of assembly version in the string sent in cpeName
         private const int EXPECTED_ELEMENT_LENGTH = 6;
 
-        //private const int MAX_ENTRY_COUNT = 5;
+        private const int MAX_ENTRY_COUNT = 5;
 
         private const string CPE_ELEMENT = "cpe";
         private const string CPE_NAME_ELEMENT = "cpeName";
@@ -111,7 +111,7 @@ namespace Tecan.Tools.Sbom2GlobalIdentifier
             }
             else
             {
-                if( !_hasNoMatchFoundBeenProcessedOnce )
+                if( !_hasNoMatchFoundBeenProcessedOnce)
                 {
                     CpeExplorer.NoMatchFoundInResponse( assemblyName );
                 }
@@ -141,11 +141,11 @@ namespace Tecan.Tools.Sbom2GlobalIdentifier
             }
             ConsoleOutput.WriteToConsole( $"{string.Join( ":", cpeElements )}", ConsoleColor.Yellow );
 
-            //if( _potentialEntryCount < MAX_ENTRY_COUNT )
-            //{
-            FileManipulator.AddToContainer( assemblyName, $"{CpeExplorer.CpePrefix} {string.Join( ":", cpeElements )}" );
-            _potentialEntryCount++;
-            //}
+            if( _potentialEntryCount < MAX_ENTRY_COUNT )
+            {
+                FileManipulator.AddToContainer( assemblyName, $"{CpeExplorer.CpePrefix} {string.Join( ":", cpeElements )}" );
+                _potentialEntryCount++;
+            }
         }
     }
 }
