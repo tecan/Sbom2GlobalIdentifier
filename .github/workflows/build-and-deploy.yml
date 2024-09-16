@@ -176,13 +176,14 @@ jobs:
           $BRANCH_NAME = "release/$env:PackageId-v$env:Version"
 
           git fetch origin
-          $branchExists = git show-ref --quiet "refs/heads/$BRANCH_NAME"
+          git show-ref --quiet "refs/heads/$BRANCH_NAME"
+          $branchExists = $LASTEXITCODE -eq 0
 
           if ($branchExists) 
           {
             Write-Host "Branch $BRANCH_NAME already exists."
             exit 0
           }
-
           git checkout -b $BRANCH_NAME
           git push origin $BRANCH_NAME
+          

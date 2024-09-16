@@ -20,10 +20,10 @@ jobs:
             $BRANCH_NAME = $env:BRANCH_NAME -replace 'refs/heads/', ''
             Write-Output "Checking branch name $BRANCH_NAME"
 
-            if ($BRANCH_NAME -notmatch '^(feature|release|bugfix|hotfix)/') 
+            if ($BRANCH_NAME -notmatch '^(feature|release|bugfix|hotfix|fix)/') 
             {
               Write-Output "Branch $BRANCH_NAME does not follow the required naming convention!"
-              Write-Output "Branch name must start with feature/, release/, bugfix/, or hotfix/"
+              Write-Output "Branch name must start with feature/, release/, bugfix/, hotfix/ or fix/"
               Write-Output "Fix the branch name before creating a PR to avoid rejection"
               exit 1
             }
